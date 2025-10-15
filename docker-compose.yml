@@ -6,7 +6,8 @@ services:
       - 9980:9980
     environment:
       - extra_params=--o:ssl.enable=false --o:ssl.termination=false
-      - server_name=localhost
+      - aliasgroup1=http://nextcloud:8080
+      - server_name=localhost:9980
     cap_add:
       - MKNOD
   nextcloud:

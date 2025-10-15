@@ -25,4 +25,9 @@ It uses docker-compose to start a Nextcloud instance with the richdocuments app 
 
 5. Enable the richdocuments app (user facing name is Nextcloud Office)
 6. Configure the Collabora Online server in Nextcloud settings to point to `http://collabora:9980` (This is the the hostname used to access the Collabora container from within the Nextcloud container)
+Run the following command to manually set the callback URL so that Collabora can communicate with Nextcloud:
+
+   ```bash
+   docker compose exec nextcloud occ richdocuments:setup -c http://nextcloud
+   ```
 7. You should now be able to create and edit documents in Nextcloud using Collabora Online.
