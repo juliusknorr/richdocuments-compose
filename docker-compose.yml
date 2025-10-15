@@ -1,0 +1,18 @@
+services:
+  collabora:
+    image: collabora/code
+    restart: always
+    ports:
+      - 9980:9980
+    environment:
+      - extra_params=--o:ssl.enable=false --o:ssl.termination=false
+      - server_name=localhost
+    cap_add:
+      - MKNOD
+  nextcloud:
+    image: ghcr.io/juliusknorr/nextcloud-dev-php82:latest
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - ./richdocuments:/var/www/html/apps-extra/richdocuments
